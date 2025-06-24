@@ -3,31 +3,18 @@ version: '3.8'
 services:
   service1:
     build: ./service_1
-    container_name: service1
-    expose:
-      - "8001"
-    networks:
-      - app-network
+    ports:
+      - "8001:8001"
 
   service2:
     build: ./service_2
-    container_name: service2
-    expose:
-      - "8002"
-    networks:
-      - app-network
+    ports:
+      - "8002:8002"
 
   nginx:
     build: ./nginx
-    container_name: nginx
     ports:
       - "8080:80"
     depends_on:
       - service1
       - service2
-    networks:
-      - app-network
-
-networks:
-  app-network:
-    driver: bridge

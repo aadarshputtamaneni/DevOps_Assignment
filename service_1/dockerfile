@@ -1,9 +1,8 @@
-FROM golang:1.21-alpine
+ FROM golang:1.21
 
 WORKDIR /app
 COPY . .
 
-RUN go build -o main main.go
+RUN go build -o service1 main.go
 
-EXPOSE 8001
-CMD ["./main"]
+CMD ["./service1"]
